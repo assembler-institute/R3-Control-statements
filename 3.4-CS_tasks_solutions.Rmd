@@ -1,0 +1,170 @@
+---
+title: "Complex in-built objects in R"
+author: "Luciano Gabbanelli"
+date: "2022-10-10"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    collapse: true
+    smooth_scroll: true
+    theme: journal
+    highlight: kate
+    df_print: paged
+    code_folding: show
+---
+# Control Flow Structures:
+
+
+## 1. Greter than 10
+
+```{r}
+a <- sample(20,1)
+a
+if (a > 10) {
+  
+  if (a %% 2 == 0) {
+    TRUE
+  } else {
+    FALSE
+  }
+  
+} else {
+  
+  print(a/2)
+  
+}
+```
+
+
+
+## 2. Squares of maximum and minumum
+
+```{r}
+
+my.vec <- round(runif(25,1,50)); my.vec
+
+if (max(my.vec) > (2*min(my.vec))) {
+  print(min(my.vec)^2)
+} else if (max(my.vec) < (5*min(my.vec))){
+  print(max(my.vec)^2)
+} else {
+    print(sort(my.vec, decreasing=TRUE))
+  }
+
+```
+
+
+
+## 3. Multiples of 3 and/or 5:
+
+```{r}
+for (n in 1:100) {
+  if (n %% 3 == 0 & n %% 5 == 0) {print(paste(n,"is multiple of both, 3 and 5."))}
+  else if (n %% 3 == 0) {print(paste(n,"is multiple of 3."))}
+  else if (n %% 5 == 0) {print(paste(n,"is multiple of 5."))}
+}
+```
+
+
+
+## 4. Scary math
+
+```{r}
+my.sum = 0
+my.prod = 0
+for (n in 0:4){
+  my.sum <- my.sum + 3*sum(n)
+  if (n == 0){
+    next
+  } else{
+    my.prod <- my.prod + 2*prod(n)
+  }
+}
+
+cat(my.sum, my.prod)
+```
+
+
+
+## 5. Random < 1
+
+```{r}
+
+repeat {
+  x <- rnorm(1)
+  print(x)
+  
+  if (x > 1){
+    break
+  }
+}
+
+while (TRUE) {
+  x <- rnorm(1)
+  print(x)
+  if (x > 1) {
+    break
+  }
+}
+```
+
+
+
+## 6. Salary
+
+```{r}
+
+salary <- as.numeric(readline("Introduce a salary: "))
+
+if (salary > 1750){
+  salary_new <- salary*1.10
+  cat("The new salary is: ", salary)
+} else {
+  salary <- salary*1.15
+  cat("The new salary is: ", salary)
+}
+
+```
+
+
+
+# 7. Divisible by 3 and 5
+
+```{r}
+my.vec <- c(1000:1)
+
+div.vec <- c()
+index <- 1
+
+for (n in my.vec){
+  if ( (n %% 3 == 0) & (n %% 5 == 0) & (n %% 7 == 0) ){
+    if (n == 525){next}
+    div.vec[index] <- n
+    index <- index + 1
+  }
+}
+
+div.vec
+```
+
+
+
+## 8. Value times index
+
+```{r}
+
+## OH! sample.int?!?! Not sample anymore! =O
+x <- sample.int(100, 10)
+x
+typeof(x)
+new.vec <- c()
+index <- 1
+while (index <= length(x)){
+  new.vec[index] <- x[index] * index
+  index <- index + 1 
+}
+
+new.vec
+
+```
