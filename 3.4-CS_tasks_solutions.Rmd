@@ -72,13 +72,13 @@ for (n in 1:100) {
 
 ```{r}
 my.sum = 0
-my.prod = 0
+my.prod = 1
 for (n in 0:4){
-  my.sum <- my.sum + 3*sum(n)
+  my.sum <- my.sum + 3*n
   if (n == 0){
     next
   } else{
-    my.prod <- my.prod + 2*prod(n)
+    my.prod <- my.prod*2*n
   }
 }
 
