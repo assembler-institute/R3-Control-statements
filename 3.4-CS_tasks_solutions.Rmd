@@ -46,7 +46,7 @@ my.vec <- round(runif(25,1,50)); my.vec
 
 if (max(my.vec) > (2*min(my.vec))) {
   print(min(my.vec)^2)
-} else if (max(my.vec) < (5*min(my.vec))){
+} else if (max(my.vec) < (2*min(my.vec))){
   print(max(my.vec)^2)
 } else {
     print(sort(my.vec, decreasing=TRUE))
